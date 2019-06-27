@@ -12,7 +12,7 @@ export default createStackNavigator(
         Animate
     },
     {
-        initialRouteName: "Login",
+        initialRouteName: "Animate",
         defaultNavigationOptions: {
             header: null,
         },

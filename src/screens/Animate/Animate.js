@@ -1,13 +1,11 @@
-import React, {Component, Fragment} from 'react';
-import {View, Animated, Dimensions, TouchableOpacity, Text} from 'react-native';
+import React, {Component} from 'react';
+import {View, Animated, Dimensions} from 'react-native';
 import Interactable from 'react-native-interactable';
-import ExpandedCard from './ExpandedCard';
+import Card from './Card';
 import {MARIO, LUIGI, YOSHI} from "../../assets/images";
 import styles, {cardSpacing} from './animate.style';
 
 class Animate extends Component {
-
-    circleProgress;
 
     cards = [
         {key: 'a', name: "Mario", image: MARIO},
@@ -30,7 +28,7 @@ class Animate extends Component {
 
         return (
             <Interactable.View
-                style={{flexDirection: 'row', position: 'absolute', left: 0}}
+                style={{flexDirection: 'row', position: 'absolute', left: leftPadding}}
                 horizontalOnly={true}
                 animatedValueX={animatedX}
                 snapPoints={snapPoints}
@@ -38,35 +36,15 @@ class Animate extends Component {
                 onSnap={() => {
 
                 }}>
-                {/*{this.cards.map((card, index) => <ExpandedCard animatedValue={animatedX} index={index}/>)}*/}
-                <ExpandedCard animatedValue={animatedX} index={0}/>
+                {this.cards.map((card, index) => <Card data={card} animatedValue={animatedX} index={index}/>)}
             </Interactable.View>
         );
     };
 
-    setNewval = () => {
-        const newVal = Math.floor(Math.random() * 100) + 1;
-        this.setState({progress: newVal});
-        this.circleProgress.animateTo(newVal);
-        this.circleProgress2.animateTo(newVal);
-        this.circleProgress3.animateTo(newVal);
-    };
-
     render() {
-
         return (
             <View style={styles.container}>
-                <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                </View>
-                {/*<View style={{height: 40}}/>*/}
-                {/*<CircleProgress ref={ref => this.circleProgress2 = ref} size={120} width={20} color={'yellow'}*/}
-                {/*                backgroundColor={'orange'}/>*/}
-                {/*<View style={{height: 40}}/>*/}
-                {/*<CircleProgress ref={ref => this.circleProgress3 = ref} size={100} width={30} color={'lightgreen'}*/}
-                {/*                backgroundColor={'green'}/>*/}
-                {/*<View style={{height: 40}}/>*/}
-                {/*<Text onPress={this.setNewval}*/}
-                {/*      style={{padding: 20, fontSize: 40, color: 'white'}}>{this.state.progress}%</Text>*/}
+                {this.renderCards()}
             </View>
         );
     }
