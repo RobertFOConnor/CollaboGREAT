@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, FlatList, TouchableOpacity, Animated, Text} from 'react-native';
+import PropTypes from 'prop-types';
 import styles from './goals.style';
+import themes from './goals.theme';
 import GoalItem from './components/GoalItem';
 import CreateGoal from './components/CreateGoal';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -41,7 +43,7 @@ class Goals extends Component {
 
 
     render() {
-        const {goals} = this.props;
+        const {goals, navigation} = this.props;
         const {showCreateGoal} = this.state;
 
         return (
@@ -54,14 +56,14 @@ class Goals extends Component {
                     />
                 </View>
                 <View style={styles.header}>
-                    <Icon name="arrow-left" size={20} color="#fff" onPress={() => this.props.navigation.goBack()}/>
-                    <Icon name="ellipsis-v" size={20} color="#fff"/>
+                    <Icon name="arrow-left" size={20} color={themes.headerIconsColor} onPress={() => navigation.goBack()}/>
+                    <Icon name="ellipsis-v" size={20} color={themes.headerIconsColor}/>
                 </View>
                 <TouchableOpacity
                     style={styles.addButton}
                     onPress={() => this.setState({showCreateGoal: !showCreateGoal})}
                 >
-                    <Icon name="plus" size={24} color="#fff"/>
+                    <Icon name="plus" size={20} color={themes.addIconColor}/>
                 </TouchableOpacity>
                 {goals.length === 0 && <Text style={styles.emptyText}>You have no goals in life.</Text>}
                 {showCreateGoal && <CreateGoal submit={this.submitGoal}/>}
@@ -69,5 +71,9 @@ class Goals extends Component {
         );
     }
 }
+
+Goals.propTypes = {
+    goals: PropTypes.array,
+};
 
 export default Goals;

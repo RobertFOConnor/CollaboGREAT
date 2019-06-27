@@ -6,10 +6,11 @@ import PropTypes from "prop-types";
 class InputText extends Component<Props> {
 
     render() {
-        const { secureTextEntry, placeholder, style} = this.props;
+        const {secureTextEntry, style} = this.props;
         return (
             <View style={[styles.container, style]}>
-                <TextInput selectionColor={'white'} placeholder={placeholder} secureTextEntry={secureTextEntry} style={styles.input} />
+                <TextInput {...this.props} selectionColor={'white'} secureTextEntry={secureTextEntry}
+                           style={styles.input}/>
             </View>
         );
     }
@@ -18,7 +19,6 @@ class InputText extends Component<Props> {
 InputText.propTypes = {
     style: PropTypes.object,
     secureTextEntry: PropTypes.bool,
-    placeholder: PropTypes.string,
 };
 
 export default InputText;

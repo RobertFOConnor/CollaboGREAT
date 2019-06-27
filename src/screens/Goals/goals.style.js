@@ -2,7 +2,7 @@ import {StyleSheet} from "react-native";
 import themes from './goals.theme';
 
 const HEADER_HEIGHT = 100;
-const ADD_BUTTON_SIZE = 70;
+const ADD_BUTTON_SIZE = 64;
 
 export default StyleSheet.create({
     container: {

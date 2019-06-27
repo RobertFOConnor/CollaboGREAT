@@ -11,8 +11,8 @@ class GoalItem extends Component {
         isCompleted: false,
     };
 
-    interpolatePosX = () => this.props.animatedValue.interpolate({
-        inputRange: [this.props.index, this.props.index + 1],
+    interpolatePosX = (index) => this.props.animatedValue.interpolate({
+        inputRange: [index, index + 1],
         outputRange: [400, 0],
         extrapolate: "clamp",
     });
@@ -21,7 +21,7 @@ class GoalItem extends Component {
         const {item, index, onDelete} = this.props;
         const {isCompleted} = this.state;
         const textDecorationLine = isCompleted ? 'line-through' : 'none';
-        const translateX = index < 8 ? this.interpolatePosX() : 0;
+        const translateX = index < 8 ? this.interpolatePosX(index) : 0;
 
         return (
             <Animated.View style={[styles.container, {transform: [{translateX}]}]}>

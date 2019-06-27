@@ -13,8 +13,8 @@ class Login extends Component {
                 <Image style={styles.background} resizeMode={'contain'} source={LOGIN_BACKGROUND}/>
                 <Text style={styles.welcome}>{APP_NAME}</Text>
                 <Text style={styles.instructions}>{SLOGAN}</Text>
-                <InputText placeholder="Email or username"/>
-                <InputText style={{marginTop: 10}} secureTextEntry placeholder="Password"/>
+                <InputText placeholder="Email or username" placeholderTextColor={'white'}/>
+                <InputText style={{marginTop: 10}} secureTextEntry placeholder="Password" placeholderTextColor={'white'}/>
                 <Button style={{marginTop: 30}} text={'Login'}
                         onPress={() => this.props.navigation.navigate('Profile')}/>
                 <Button text={'Create account'} style={{marginTop: 10, backgroundColor: 'white'}}
